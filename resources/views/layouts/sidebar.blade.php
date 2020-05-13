@@ -37,7 +37,11 @@
               <li><a href="{{ url('/books') }}"><i class="fa fa-table"></i>Books</a>
               </li>
               @if (Auth::user()->roles == 'ADMIN')
-              <li><a href="{{ url('/orders') }}"><i class="fa fa-edit"></i> Manage Orders</a>
+              <li><a><i class="fa fa-edit"></i> Manage Orders<span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="{{ url('/orders') }}">List Orders</a></li>
+                  <li><a href="{{ url('/bookorder') }}">Detail Orders</a></li>
+              </ul>
               </li>
               @endif
               <li><a href="{{ url('/kontak') }}"><i class="fa fa-clone"></i>Hubungi Kami</a>

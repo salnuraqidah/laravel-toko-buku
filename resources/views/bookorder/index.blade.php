@@ -2,7 +2,7 @@
 @section('content')
 @php
     $no = 1;
-    $ar_judul = ['No','Judul Buku', 'Stok', 'Harga','Jumlah','Action'];
+    $ar_judul = ['No','Customer','Judul Buku', 'Quantity'];
 @endphp
 
 <div class="clearfix"></div>
@@ -27,11 +27,6 @@
     {{session('status')}}
 </div>
 @endif
-<a href="{{ route('member.create') }}" class="btn btn-info  btn-user">
-  <i class="fa fa-plus"></i>&nbsp;Add User
-</a>
-
-<br/><br/>
 <table id="datatable" class="table table-striped table-bordered" style="width:100%">
     <thead>
       <tr>
@@ -44,21 +39,9 @@
       @foreach ($ar_book_order as $beli)
       <tr>
           <td>{{ $no++ }}</td>
+          <td>{{ $beli->name }}</td>
           <td>{{ $beli->judul }}</td>
-          <td></td>
-          <td></td>
-          <td>{{$beli->quantity}}</td>
-          <td>
-            <form method="POST" action="{{ route('bookorder.destroy',$beli->id) }}">
-              @csrf
-              @method('DELETE')
-              <a class="btn btn-info" href="{{ route('bookorder.show',$beli->id) }}"><i class="fa fa-folder"></i></a>&nbsp;
-                <a class="btn btn-warning" href="{{ route('bookorder.edit',$beli->id) }}"><i class="fa fa-pencil-square-o"></i></a>&nbsp;
-                <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this user permanently')" >
-                <i class="fa fa-remove"></i>
-              </button>
-            </form>
-          </td>
+          <td>{{ $beli->quantity }}</td>
         </tr>          
       @endforeach
     </tbody>

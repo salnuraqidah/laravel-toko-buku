@@ -26,22 +26,7 @@ $rs1 = App\Member::all();
           @error('invoice_number') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
       </div>
-      <div class="item form-group">
-        <label class="col-form-label col-md-3 col-sm-3 label-align">Customer <span>*</span>
-        </label>
-       
-        {{-- @php$val=($errors->isEmpty())?$rs->buyer:old('buyer');@endphp --}}
-        <div class="col-md-6 col-sm-6 ">
-          @php
-               $val = ( Auth::user()->id == $rs->user_id) ?  Auth::user()->name : '';
-          @endphp
-          <input disabled type="text" name="buyer" value="{{ $val }}" class="form-control @error ('buyer') is-invalid @enderror">
-
-          @error('buyert') <div class="invalid-feedback">{{ $message }}</div> @enderror
-        </div>
-       
-      </div>
-      
+     
 
       <div class="item form-group">
         <label class="col-form-label col-md-3 col-sm-3 label-align">Total Price <span>*</span>

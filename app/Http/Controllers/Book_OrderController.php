@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Book_Order;
+use App\Order;
 
 class Book_OrderController extends Controller
 {
@@ -15,9 +16,12 @@ class Book_OrderController extends Controller
      */
     public function index()
     {
-        $ar_book_order = DB::table('books')
-            ->join('categories', 'categories.id', '=', 'books.categories_id')
-            ->select('books.*', 'categories.name AS catag')
+        // $order = Order::where('id', $id)->first();
+        $ar_book_order = DB::table('book_order')
+            ->join('books', 'books.id', '=', 'book_order.book_id')
+            ->join('orders', 'orders.id', '=', 'book_order.order_id')
+            ->join('users', 'users.id', '=', 'orders.user_id')
+            ->select('book_order.*', 'books.title AS judul', 'users.name as name')
             ->get();
         return view('bookorder.index', compact('ar_book_order'));
         /*
@@ -59,7 +63,14 @@ class Book_OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $ar_book_order = DB::table('book_order')
+            ->join('books', 'books.id', '=', 'book_order.book_id')
+            ->join('orders', 'orders.id', '=', 'book_order.order_id')
+            ->join('users', 'users.id', '=', 'orders.user_id')
+            ->select('book_order.*', 'books.title AS judul', 'users.name as name')
+            ->where('book_order.id', '=', $id)
+            ->get();
+        return view('bookorder.show', compact('ar_book_order'));
     }
 
     /**

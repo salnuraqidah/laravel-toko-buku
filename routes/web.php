@@ -33,3 +33,4 @@ Route::post('orders/{id}', 'OrderController@pesan');
 Route::get('/kontak', function () {
     return view('kontak');
 });
+Route::get('bookorder/{id}', 'Book_OrderController@show');

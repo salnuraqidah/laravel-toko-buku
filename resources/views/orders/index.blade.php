@@ -50,7 +50,6 @@
             <form method="POST" action="{{ route('orders.destroy',$order->id) }}">
               @csrf
               @method('DELETE')
-              <a class="btn btn-info" href="{{ route('orders.show',$order->id) }}"><i class="fa fa-folder"></i></a>&nbsp;
                 <a class="btn btn-warning" href="{{ route('orders.edit',$order->id) }}"><i class="fa fa-pencil-square-o"></i></a>&nbsp;
                 <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this user permanently')" >
                 <i class="fa fa-remove"></i>

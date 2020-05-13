@@ -45,7 +45,6 @@ class MemberController extends Controller
             [
                 'name' => 'required|max:255',
                 'email' => 'required|email|max:255',
-                'password' => 'required|min:8',
                 'roles' => 'required',
                 'status' =>  'required',
                 'address' =>  'required',
@@ -116,7 +115,6 @@ class MemberController extends Controller
             [
                 'name' => 'required|max:255',
                 'email' => 'required|email|max:255',
-                'password' => 'required|min:8',
                 'roles' => 'required',
                 'status' =>  'required',
                 'address' =>  'required',
